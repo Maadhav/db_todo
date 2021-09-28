@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'note.dart';
+import 'note_details.dart/note_list.dart';
 
 main(List<String> args) {
   runApp(Start(title: "sqfLite todo"));
