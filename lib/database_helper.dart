@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison
+// ignore_for_file: unnecessary_null_comparison, unnecessary_this
 
 import 'package:flutter/widgets.dart';
 
@@ -66,6 +66,7 @@ class DatabaseHelper {
   Future<int> updateNote(Note note) async {
     Database db = await this.database;
     var result = await db
+        // ignore: unnecessary_string_interpolations
         .update(noteTable, note.toMap(), where: '$colID', whereArgs: [note.id]);
     return result;
   }
@@ -89,5 +90,11 @@ class DatabaseHelper {
     var noteMapList = await getNoteMapList();
 
     int count = noteMapList.length;
+    List<Note> noteList = <Note>[];
+
+    for (var i = 0; i < count; i++) {
+      noteList.add(Note.fromMapObject(noteMapList[i]));
+    }
+    return noteList;
   }
 }

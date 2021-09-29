@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, unused_field
+// ignore_for_file: prefer_typing_uninitialized_variables, unused_field, unnecessary_this
 
 class Note {
   var _id;
@@ -7,16 +7,18 @@ class Note {
   var _date;
   var _priority;
 
-  Note(this._title, this._date, this._priority, [this._descrition]);
+  Note(this._title, this._date, this._priority, [this._description]);
   Note.withId(this._id, this._title, this._date, this._priority,
       [this._description]);
 
+//All the getters;
   int get id => _id;
   String get title => _title;
   String get description => _description;
   String get date => _date;
   int get priority => _priority;
 
+  //All the setters;
   set title(String newTitle) {
     if (newTitle.length <= 255) {
       this._title = newTitle;
