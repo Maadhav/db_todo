@@ -28,8 +28,8 @@ class _noteDetailState extends State<noteDetail> {
 
   @override
   Widget build(BuildContext context) {
-    titleController.text = note.title;
-    descriptionController.text = note.description;
+    titleController.text = note.title??'';
+    descriptionController.text = note.description??'';
     return WillPopScope(
         child: Scaffold(
           appBar: AppBar(
@@ -64,7 +64,7 @@ class _noteDetailState extends State<noteDetail> {
                                       color: Colors.red)),
                             );
                           }).toList(),
-                          value: updatePriorityString(note.priority),
+                          value: updatePriorityString(note.priority??-1),
                           onChanged: (valueSelectedByUser) {
                             setState(() {
                               updatePriorityasInt(
@@ -171,7 +171,7 @@ class _noteDetailState extends State<noteDetail> {
       return;
     }
 
-    int result = await databaseHelper.deleteNote(note.id);
+    int result = await databaseHelper.deleteNote(note.id??0);
     if (result != 0) {
       _showAlertDialog('Status', 'Deleted successfully');
     } else {
@@ -215,17 +215,17 @@ class _noteDetailState extends State<noteDetail> {
   updateDescription() async {
     note.description = descriptionController.text;
     note.date = DateFormat.yMMMd().format(DateTime.now());
-    int result;
-    if (note.id != null) {
-      result = await databaseHelper.updateNote(note);
-    } else {
-      result = await databaseHelper.insertData(note);
-    }
-    if (result != 0) {
-      _showAlertDialog('Status', 'Note Saved successfully');
-    } else {
-      _showAlertDialog('Status', "Problem saving note");
-    }
+    // int result;
+    // if (note.id != null) {
+    //   result = await databaseHelper.updateNote(note);
+    // } else {
+    //   result = await databaseHelper.insertData(note);
+    // }
+    // if (result != 0) {
+    //   _showAlertDialog('Status', 'Note Saved successfully');
+    // } else {
+    //   _showAlertDialog('Status', "Problem saving note");
+    // }
   }
 
   _save() async {

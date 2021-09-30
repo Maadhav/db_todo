@@ -21,7 +21,7 @@ class _NoteListState extends State<NoteList> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          navigateToDetail(Note('', '', ''), 'List starts');
+          navigateToDetail(Note('', '', 0), 'List starts');
         },
         child: const Icon(Icons.add),
       ),

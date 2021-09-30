@@ -1,6 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison, unnecessary_this
-
-import 'package:flutter/widgets.dart';
 
 import 'note.dart';
 import 'package:sqflite/sqflite.dart';
@@ -9,7 +6,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
 class DatabaseHelper {
-  static DatabaseHelper _databaseHelper = DatabaseHelper();
+  static DatabaseHelper? _databaseHelper;
   static Database? _database;
 
   String noteTable = 'note_table';
@@ -26,7 +23,7 @@ class DatabaseHelper {
       var databaseHelper = DatabaseHelper._createInstance();
       _databaseHelper = databaseHelper;
     }
-    return _databaseHelper;
+    return _databaseHelper!;
   }
 
 //custom getter for the database
